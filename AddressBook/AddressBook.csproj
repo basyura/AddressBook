@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,10 +59,11 @@
     <None Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </None>
+    <Compile Include="Models\Address.cs" />
     <Compile Include="ViewModels\AddressBookViewModel.cs" />
     <Compile Include="Actions\AddressBook\AddressBookActionBase.cs" />
     <Compile Include="Actions\AddressBook\Initialize.cs" />
-    <Compile Include="Actions\AddressBook\Hello.cs" />
+    <Compile Include="Actions\AddressBook\Narrow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Page Include="Views\AddressBookView.xaml">
       <Generator>MSBuild:Compile</Generator>

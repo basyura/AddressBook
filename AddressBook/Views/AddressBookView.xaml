@@ -4,7 +4,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:ev="clr-namespace:Eleve;assembly=Eleve"
         xmlns:vm="clr-namespace:AddressBook.ViewModels"
-        Title="MainWindow" Height="350" Width="525">
+        Title="AddressBook" Height="350" Width="525">
     
     <ev:ViewBase.DataContext>
         <vm:AddressBookViewModel />
@@ -18,16 +18,25 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Content="Hello" Width="50" Height="50" Margin="10">
+        <TextBox Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Click">
-                    <ev:Execute Action="Hello" />
+                <i:EventTrigger EventName="PreviewKeyDown">
+                    <ev:Execute Action="Narrow" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-        </Button>
-        <TextBlock Grid.Row="1" Text="{Binding Message}" TextAlignment="Center" />
+        </TextBox>
+        <ListBox Grid.Row="1" ItemsSource="{Binding Addresses}" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Email}" Width="150" />
+                        <TextBlock Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </ev:ViewBase>
