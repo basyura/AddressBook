@@ -14,13 +14,10 @@ namespace AddressBook.Actions.AddressBook
         public override Task<ActionResult> Execute(object sender, EventArgs e, object obj)
         {
             KeyEventArgs ev = e as KeyEventArgs;
-            //if (ev.Key == Key.H && ModifierKeys & Key.DbeEnterDialogConversionMode
-            //{
-            //}
+
             if (((Keyboard.Modifiers & ModifierKeys.Control) != ModifierKeys.None) && ev.Key == Key.H)
             {
-                //ViewModel.Text = ViewModel.Text.Substring(0, ViewModel.Text.Length - 1);
-                //System.Windows.Forms.SendKeys.SendWait("{Delete}");
+                System.Windows.Forms.SendKeys.SendWait("{BackSpace}");
                 return SuccessTask;
             }
 

@@ -10,8 +10,8 @@ namespace AddressBook.Actions.AddressBook
     {
         public override Task<ActionResult> Execute(object sender, EventArgs evnt, object parameter)
         {
-            ViewModel.Sources.Add(new Address { Email = "hoge@fuga.com", Name = "cat" });
-            ViewModel.Sources.Add(new Address { Email = "goga@hooo.com", Name = "dog" });
+            ViewModel.Sources.Add(new Address { Email = "hoge@fuga.com", Name = "cat", Belongs="animal" });
+            ViewModel.Sources.Add(new Address { Email = "goga@hooo.com", Name = "dog", Belongs= "animal"});
 
             ViewModel.Addresses = new ObservableCollection<Address>(ViewModel.Sources);
 

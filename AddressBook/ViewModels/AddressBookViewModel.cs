@@ -29,5 +29,13 @@ namespace AddressBook.ViewModels
             get { return _Addresses; }
             set { SetProperty(ref _Addresses, value); }
         }
+
+        /// <summary></summary>
+        public Address _SelectedItem;
+        public Address SelectedItem
+        {
+            get { return _SelectedItem; }
+            set { SetProperty(ref _SelectedItem, value); }
+        }
     }
 }

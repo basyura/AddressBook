@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices;
+
 using System.Windows;
+using System.Windows.Threading;
 
 namespace AddressBook
 {
@@ -13,5 +11,22 @@ namespace AddressBook
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            this.DispatcherUnhandledException += Application_DispatcherUnhandledException;
+            base.OnStartup(e);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            if (e.Exception is COMException comException && comException.ErrorCode == -2147221040)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

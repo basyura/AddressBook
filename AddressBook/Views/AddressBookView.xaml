@@ -18,25 +18,36 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="30"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        <TextBox Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" FontSize="20">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="PreviewKeyDown">
                     <ev:Execute Action="Narrow" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </TextBox>
-        <ListBox Grid.Row="1" ItemsSource="{Binding Addresses}" >
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Email}" Width="150" />
-                        <TextBlock Text="{Binding Name}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        
+        <DataGrid Grid.Row="1" AutoGenerateColumns="False" ItemsSource="{Binding Addresses}" SelectedItem="{Binding SelectedItem}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <ev:Execute Action="Copy" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="email" Binding="{Binding Email}" IsReadOnly="True" />
+                <DataGridTextColumn Header="name" Binding="{Binding Name}" IsReadOnly="True" />
+                <DataGridTextColumn Header="belongs" Binding="{Binding Belongs}" IsReadOnly="True" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </ev:ViewBase>

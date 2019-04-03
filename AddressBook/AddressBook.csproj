@@ -56,9 +56,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="App.xaml.cs">
+    <Compile Include="Actions\AddressBook\Copy.cs" />
+    <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
-    </None>
+    </Compile>
     <Compile Include="Models\Address.cs" />
     <Compile Include="ViewModels\AddressBookViewModel.cs" />
     <Compile Include="Actions\AddressBook\AddressBookActionBase.cs" />
