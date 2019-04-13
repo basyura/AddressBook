@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Eleve;
+using System.Windows.Controls;
 using AddressBook.Models;
+using Eleve;
 
 namespace AddressBook.ViewModels
 {
@@ -36,6 +33,13 @@ namespace AddressBook.ViewModels
         {
             get { return _SelectedItem; }
             set { SetProperty(ref _SelectedItem, value); }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public void FocusToNarrowText()
+        {
+            GetElement<TextBox>("NarrowTextBox").Focus();
         }
     }
 }

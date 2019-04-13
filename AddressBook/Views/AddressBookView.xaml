@@ -21,7 +21,7 @@
             <RowDefinition Height="30"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" FontSize="20">
+        <TextBox Name="NarrowTextBox" Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" FontSize="20">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="PreviewKeyDown">
                     <ev:Execute Action="Narrow" />
