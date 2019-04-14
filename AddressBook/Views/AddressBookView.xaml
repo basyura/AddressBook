@@ -44,6 +44,17 @@
         
         <DataGrid Grid.Row="1" ItemsSource="{Binding Addresses}" SelectedItem="{Binding SelectedItem}"
                   AutoGenerateColumns="False" CanUserAddRows="False" >
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Delete">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <ev:Execute Action="Delete" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
