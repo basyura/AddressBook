@@ -1,0 +1,55 @@
+﻿<ev:ViewBase x:Class="AddressBook.Views.AddressEditView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:ev="clr-namespace:Eleve;assembly=Eleve"
+        xmlns:vm="clr-namespace:AddressBook.ViewModels"
+        xmlns:local="clr-namespace:AddressBook.Views"
+        mc:Ignorable="d"
+        Title="AddressEditView" Height="200" Width="500">
+    <ev:ViewBase.DataContext>
+        <vm:AddressEditViewModel />
+    </ev:ViewBase.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Text="Name" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Text="Email" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Text="Belongs" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <TextBox Grid.Row="0" Grid.Column="1" Height="30" Text="{Binding Name}" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Padding="5" Margin="0 0 5 0"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Height="30" Text="{Binding Email}" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Padding="5" Margin="0 0 5 0" />
+        <TextBox Grid.Row="2" Grid.Column="1" Height="30" Text="{Binding Belongs}"  VerticalAlignment="Stretch" VerticalContentAlignment="Center" Padding="5" Margin="0 0 5 0"/>
+
+
+        <Grid Grid.Row="3" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Border VerticalAlignment="Center">
+                <TextBlock Text="{Binding Message}" Foreground="DarkRed" />
+            </Border>
+            <Border Grid.Column="1" Padding="5">
+                <Button Content="Decide" Width="80" Height="30" HorizontalAlignment="Right">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <ev:Execute Action="Decide" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Border>
+        </Grid>
+    </Grid>
+</ev:ViewBase>

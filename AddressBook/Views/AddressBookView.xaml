@@ -21,15 +21,29 @@
             <RowDefinition Height="30"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox Name="NarrowTextBox" Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" FontSize="20">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="PreviewKeyDown">
-                    <ev:Execute Action="Narrow" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </TextBox>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <TextBox Name="NarrowTextBox" Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" FontSize="20">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewKeyUp">
+                        <ev:Execute Action="Narrow" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+            <Button Grid.Column="1" Content="Add" Padding="5 0 5 0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <ev:Execute Action="Add" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers> 
+            </Button>
+        </Grid>
         
-        <DataGrid Grid.Row="1" AutoGenerateColumns="False" ItemsSource="{Binding Addresses}" SelectedItem="{Binding SelectedItem}">
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Addresses}" SelectedItem="{Binding SelectedItem}"
+                  AutoGenerateColumns="False" CanUserAddRows="False" >
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
@@ -44,9 +58,9 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="email" Binding="{Binding Email}" IsReadOnly="True" />
-                <DataGridTextColumn Header="name" Binding="{Binding Name}" IsReadOnly="True" />
-                <DataGridTextColumn Header="belongs" Binding="{Binding Belongs}" IsReadOnly="True" />
+                <DataGridTextColumn Header="name" Binding="{Binding Name}" IsReadOnly="True" MinWidth="100" />
+                <DataGridTextColumn Header="email" Binding="{Binding Email}" IsReadOnly="True" MinWidth="200" />
+                <DataGridTextColumn Header="belongs" Binding="{Binding Belongs}" IsReadOnly="True" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

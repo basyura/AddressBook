@@ -24,14 +24,22 @@ namespace AddressBook.Actions.AddressBook
             if (string.IsNullOrEmpty(ViewModel.Text))
             {
                 ViewModel.Addresses = new ObservableCollection<Address>(ViewModel.Sources);
-            }
-            else
-            {
-                IEnumerable<Address> targets = ViewModel.Sources.Where(v => v.Email.Contains(ViewModel.Text));
-                ViewModel.Addresses = new ObservableCollection<Address>(targets);
+                return SuccessTask;
             }
 
+            IEnumerable<Address> targets = NarrowAddresses(ViewModel.Sources);
+            ViewModel.Addresses = new ObservableCollection<Address>(targets);
+
             return SuccessTask;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sources"></param>
+        /// <returns></returns>
+        private IEnumerable<Address> NarrowAddresses(List<Address> sources)
+        {
+            return sources.Where(v => v.Name.Contains(ViewModel.Text));
         }
     }
 }

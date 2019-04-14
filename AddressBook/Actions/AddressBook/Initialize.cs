@@ -28,8 +28,11 @@ namespace AddressBook.Actions.AddressBook
         {
             List<Address> addresses = new List<Address>()
             {
-                new Address { Email = "hoge@fuga.com", Name = "cat", Belongs="animal" },
-                new Address { Email = "goga@hooo.com", Name = "dog", Belongs= "animal"},
+                new Address { Email = "cat@fuga.com", Name = "cat", Belongs="animal" },
+                new Address { Email = "dog@hooo.com", Name = "dog", Belongs= "animal"},
+                new Address { Email = "hoge@hooo.com", Name = "ほげ", Belongs= "hoge"},
+                new Address { Email = "fuga@hooo.com", Name = "ふが", Belongs= "fuga"},
+                new Address { Email = "aiueo@hooo.com", Name = "あいうえお", Belongs= "fuga"},
             };
 
             return addresses;
