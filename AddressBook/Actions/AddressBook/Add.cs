@@ -21,6 +21,9 @@ namespace AddressBook.Actions.AddressBook
 
                 ViewModel.Sources.Add(address);
                 ViewModel.Addresses.Add(address);
+
+                ViewModel.Save();
+
             });
 
 

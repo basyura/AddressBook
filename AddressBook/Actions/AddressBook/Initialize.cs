@@ -11,20 +11,19 @@ namespace AddressBook.Actions.AddressBook
     {
         public override Task<ActionResult> Execute(object sender, EventArgs evnt, object parameter)
         {
-            IEnumerable<Address> addresses = LoadAddresses();
-
-            ViewModel.Sources = new List<Address>(addresses);
-            ViewModel.Addresses = new ObservableCollection<Address>(ViewModel.Sources);
+            if (!ViewModel.Load())
+            {
+                LoadSample();
+            }
 
             ViewModel.FocusToNarrowText();
-
 
             return SuccessTask;
         }
         /// <summary>
         /// 
         /// </summary>
-        private IEnumerable<Address> LoadAddresses()
+        private void LoadSample()
         {
             List<Address> addresses = new List<Address>()
             {
@@ -35,7 +34,8 @@ namespace AddressBook.Actions.AddressBook
                 new Address { Email = "aiueo@hooo.com", Name = "あいうえお", Belongs= "fuga"},
             };
 
-            return addresses;
+            ViewModel.Sources = new List<Address>(addresses);
+            ViewModel.Addresses = new ObservableCollection<Address>(ViewModel.Sources);
         }
     }
 }
