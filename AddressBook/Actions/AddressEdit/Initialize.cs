@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using AddressBook.Models;
 using Eleve;
 
 namespace AddressBook.Actions.AddressEdit
@@ -11,6 +9,14 @@ namespace AddressBook.Actions.AddressEdit
     {
         public override Task<ActionResult> Execute(object sender, EventArgs args, object obj)
         {
+            Address address = obj as Address;
+            if (obj != null)
+            {
+                ViewModel.Name = address.Name;
+                ViewModel.Email = address.Email;
+                ViewModel.Belongs = address.Belongs;
+            }
+
             return SuccessTask;
         }
     }

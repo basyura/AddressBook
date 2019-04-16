@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\AddressBook\Delete.cs" />
+    <Compile Include="Actions\AddressBook\Edit.cs" />
     <Compile Include="Actions\AddressEdit\AddressEditActionBase.cs" />
     <Compile Include="Actions\AddressEdit\Decide.cs" />
     <Compile Include="Actions\AddressEdit\Initialize.cs" />

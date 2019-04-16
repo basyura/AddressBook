@@ -46,6 +46,13 @@
                   AutoGenerateColumns="False" CanUserAddRows="False" >
             <DataGrid.ContextMenu>
                 <ContextMenu>
+                    <MenuItem Header="Edit">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <ev:Execute Action="Edit" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </MenuItem>
                     <MenuItem Header="Delete">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
