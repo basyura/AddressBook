@@ -9,12 +9,9 @@ namespace AddressBook.Actions.AddressEdit
     {
         public override Task<ActionResult> Execute(object sender, EventArgs args, object obj)
         {
-            Address address = obj as Address;
-            if (obj != null)
+            if (obj is Address address)
             {
-                ViewModel.Name = address.Name;
-                ViewModel.Email = address.Email;
-                ViewModel.Belongs = address.Belongs;
+                ViewModel.Address = address;
             }
 
             return SuccessTask;

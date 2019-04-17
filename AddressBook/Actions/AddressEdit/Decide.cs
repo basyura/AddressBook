@@ -9,18 +9,12 @@ namespace AddressBook.Actions.AddressEdit
     {
         public override Task<ActionResult> Execute(object sender, EventArgs args, object obj)
         {
-            if (!CanDecide(out string message))
+            Address address = ViewModel.Address;
+            if (!CanDecide(address, out string message))
             {
                 ViewModel.Message = message;
                 return SuccessTask;
             }
-
-            Address address = new Address()
-            {
-                Name = ViewModel.Name,
-                Email = ViewModel.Email,
-                Belongs = ViewModel.Belongs,
-            };
 
             CloseWindow(WindowCloseType.OK, address);
 
@@ -31,22 +25,21 @@ namespace AddressBook.Actions.AddressEdit
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        private bool CanDecide(out string message)
+        private bool CanDecide(Address address, out string message)
         {
             message = "";
 
-            if (string.IsNullOrWhiteSpace(ViewModel.Name))
+            if (string.IsNullOrWhiteSpace(address.Name))
             {
                 message = "You must input Name.";
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(ViewModel.Email))
+            if (string.IsNullOrWhiteSpace(address.Email))
             {
                 message = "You must input Email.";
                 return false;
             }
-
 
             return true;
         }
