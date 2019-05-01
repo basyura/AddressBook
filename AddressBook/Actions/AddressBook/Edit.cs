@@ -34,6 +34,8 @@ namespace AddressBook.Actions.AddressBook
                     source.Name = result.Name;
                     source.Belongs = result.Belongs;
                 }
+
+                ViewModel.Save();
             });
 
             return SuccessTask;

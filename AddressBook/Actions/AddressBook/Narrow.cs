@@ -27,7 +27,7 @@ namespace AddressBook.Actions.AddressBook
                 return SuccessTask;
             }
 
-            IEnumerable<Address> targets = NarrowAddresses(ViewModel.Sources);
+            IEnumerable<Address> targets = NarrowAddresses(ViewModel.Text, ViewModel.Sources);
             ViewModel.Addresses = new ObservableCollection<Address>(targets);
 
             return SuccessTask;
@@ -37,9 +37,9 @@ namespace AddressBook.Actions.AddressBook
         /// </summary>
         /// <param name="sources"></param>
         /// <returns></returns>
-        private IEnumerable<Address> NarrowAddresses(List<Address> sources)
+        private IEnumerable<Address> NarrowAddresses(string text, List<Address> sources)
         {
-            return sources.Where(v => v.Name.Contains(ViewModel.Text));
+            return sources.Where(v => v.Name.ToLower().Contains(text.ToLower()));
         }
     }
 }
